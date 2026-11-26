@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-maroon-950: #2D020D;
+  --color-maroon-900: #4A0416;
+  --color-maroon-800: #6B0F24;
+  --color-maroon-700: #800020;
+  --color-maroon-600: #9F1239;
+  --color-maroon-500: #BE123C;
+  --color-maroon-100: #FCE7EC;
+  --color-maroon-50: #FFF5F7;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseAura {
+  0%, 100% {
+    opacity: 0.72;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spinSlow 6s linear infinite;
+}
+
+.animate-pulse-aura {
+  animation: pulseAura 2.4s ease-in-out infinite;
+}
+
+.glass-surface {
+  background: rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(128, 0, 32, 0.12);
+  box-shadow: 0 12px 36px -12px rgba(74, 4, 22, 0.1);
+}
+
+.glass-maroon {
+  background: linear-gradient(135deg, rgba(107, 15, 36, 0.94), rgba(64, 4, 20, 0.96));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 20px 48px -16px rgba(74, 4, 22, 0.45);
+}
+
+@keyframes fadeUpSmooth {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes scaleInSmooth {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUpSmooth 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-scale-in {
+  animation: scaleInSmooth 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow,
+  .animate-spin-slow,
+  .animate-pulse-aura,
+  .animate-fade-up,
+  .animate-scale-in {
+    animation: none;
+  }
+}
